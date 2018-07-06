@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div [ngClass]="{'col-md-10':!detail, 'col-mg-6':detail}">
+      <table class="table">
+        <tbody>
+        <tr *ngFor="let book of books" (click)="GetBookDetail(book.id)">
+          <th>{{book.title}}</th>
+          <td [ngClass]="{'free':book.avaliable, 'notFree':!book.avaliable}"><div *ngIf="!book.avaliable" style="display: inline">non </div>disponible</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div [ngClass]="{'col-md-2':!detail, 'col-mg-6':detail, 'display':detail, 'nonDisplay':!detail}">
+      <div class="container border border-success rounded">
+        <div><button (click)="CloseDetail()">x</button></div>
+        <div><b>Titre : </b>{{book.title}}</div>
+        <div><b>Auteur : </b>{{book.author}}</div>
+        <div><b>Date : </b>{{book.year}}</div>
+        <div><b>Pays : </b>{{book.country}}</div>
+        <div><b>Langue : </b>{{book.language}}</div>
+        <div><b>LIRE : </b><a [href]="book.link">Wikipedia</a></div>
+        <div><b>Nombre de pages : </b>{{book.pages}}</div>
+        <div><b>Nombre de fois emprunté : </b>{{book.nbRent}}</div>
+        <div>
+          <button *ngIf="book.avaliable" (click)="ftEmprunter(book.id)">Emprunter</button>
+          <div style="display: inline" >
+            <button *ngIf="!book.avaliable" disabled>Emprunter</button>
+            <button *ngIf="!book.avaliable" (click)="ftRendre(book.id)">Rendre</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

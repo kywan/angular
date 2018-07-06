@@ -1,0 +1,13 @@
+.free{
+  color: green;
+}
+.notFree{
+ color: red;
+}
+.display{
+  display: inline;
+  margin-left: 25px;
+}
+.nonDisplay{
+  display: none;
+}
